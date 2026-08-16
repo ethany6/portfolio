@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ethan Y — FiveM & Software Developer</title>
+  <meta name="description" content="Portfolio of Ethan Y, a FiveM and software developer from South Australia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    try {
+      var t = localStorage.getItem("theme");
+      if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <div class="loadbar" id="loadbar" aria-hidden="true"></div>
+
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+    <span class="orb orb-4"></span>
+  </div>
+
+  <nav class="nav" id="nav">
+    <a class="nav__logo" href="#home">&lt;ethany /&gt;</a>
+    <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="#home" class="nav__link">Home</a></li>
+      <li><a href="#about" class="nav__link">About</a></li>
+      <li><a href="#projects" class="nav__link">Projects</a></li>
+      <li><a href="#skills" class="nav__link">Skills</a></li>
+      <li><a href="#experience" class="nav__link">Experience</a></li>
+      <li><a href="#contact" class="nav__link">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light or dark theme">
+      <span class="theme-toggle__icon theme-toggle__sun" aria-hidden="true">&#9728;</span>
+      <span class="theme-toggle__icon theme-toggle__moon" aria-hidden="true">&#9790;</span>
+    </button>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="status-pill">
+      <span class="status-pill__dot" aria-hidden="true"></span>
+      <span>Currently coding FiveM scripts</span>
+    </div>
+    <p class="hero__hello">👋 Hi, I'm</p>
+    <h1 class="hero__name">Ethan</h1>
+    <h2 class="hero__title">I make <span id="typewriter"></span><span class="hero__cursor">|</span></h2>
+    <p class="hero__blurb">
+      I like to code things. I craft FiveM scripts and resources, mostly with Lua and
+      JavaScript, and I'm based in South Australia.
+    </p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="#projects">View my work</a>
+      <a class="btn btn--ghost" href="#contact">Get in touch</a>
+    </div>
+    <div class="hero__socials">
+      <a href="https://github.com/ethany6" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+      <a href="https://x.com/gc_ethany" target="_blank" rel="noopener" aria-label="X (Twitter)">X</a>
+      <a href="https://www.twitch.tv/gc_ethany" target="_blank" rel="noopener" aria-label="Twitch">Twitch</a>
+    </div>
+    <a class="hero__scroll" href="#projects" aria-label="Scroll down">⌄</a>
+  </header>
+
+  <main>
+    <section class="section" id="about">
+      <h2 class="section__title reveal">About</h2>
+      <p class="section__subtitle reveal">A little about me and what I'm up to.</p>
+
+      <div class="about-grid">
+        <div class="discord-card reveal">
+          <div class="discord-card__header">
+            <span class="discord-card__label">discord</span>
+            <span class="discord-card__status"><i></i> online</span>
+          </div>
+          <div class="discord-card__profile">
+            <div class="discord-card__avatar">
+              <img src="https://avatars.githubusercontent.com/u/100106385?v=4" alt="Avatar" />
+              <span class="discord-card__presence"></span>
+            </div>
+            <div class="discord-card__identity">
+              <span class="discord-card__name">Ethan</span>
+              <span class="discord-card__tag">@ethany6</span>
+            </div>
+          </div>
+          <div class="discord-card__activity">
+            <img class="discord-card__activity-icon" src="https://oasisrp.net/forums/uploads/monthly_2025_06/46535412_MainLogo.png" alt="Oasis" />
+            <div class="discord-card__activity-body">
+              <span class="discord-card__activity-label">PLAYING A GAME</span>
+              <span class="discord-card__activity-name">Oasis</span>
+              <a class="discord-card__activity-detail" href="https://oasisrp.net/forums/" target="_blank" rel="noopener">oasisrp.net ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats reveal">
+          <div class="stat">
+            <span class="stat__value" id="statRepos">—</span>
+            <span class="stat__label">Repositories</span>
+          </div>
+          <div class="stat">
+            <span class="stat__value" id="statStars">—</span>
+            <span class="stat__label">Total Stars</span>
+          </div>
+          <div class="stat">
+            <span class="stat__value" id="statFollowers">—</span>
+            <span class="stat__label">Followers</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq reveal">
+        <button class="faq__item" type="button">
+          <span class="faq__q">Who are you?</span>
+          <span class="faq__toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="faq__a"><p>I'm Ethan, a developer from South Australia and co-founder of Galaxy Nexus. I like to code things — mainly FiveM scripts and web stuff.</p></div>
+
+        <button class="faq__item" type="button">
+          <span class="faq__q">What do you build?</span>
+          <span class="faq__toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="faq__a"><p>FiveM resources in Lua, websites, and backend/frontend systems. I also publish open-source tools on GitHub.</p></div>
+
+        <button class="faq__item" type="button">
+          <span class="faq__q">What's your stack?</span>
+          <span class="faq__toggle" aria-hidden="true">+</span>
+        </button>
+        <div class="faq__a"><p>Lua, JavaScript, HTML/CSS, Node.js, and SQL/MySQL. I use VS Code and Git daily.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <h2 class="section__title reveal">Projects</h2>
+      <p class="section__subtitle reveal">Things I've built, tinkered with, and shipped.</p>
+      <div class="projects-grid">
+        <article class="card reveal">
+          <div class="card__accent accent-1"></div>
+          <h3 class="card__title">civpack</h3>
+          <p class="card__desc">Need a FiveM civpack? Well, here's one — a civilian character pack for your server.</p>
+          <ul class="card__tags">
+            <li>Lua</li><li>FiveM</li>
+          </ul>
+          <div class="card__links">
+            <a href="https://github.com/ethany6/civpack" target="_blank" rel="noopener">Code ↗</a>
+          </div>
+        </article>
+        <article class="card reveal">
+          <div class="card__accent accent-2"></div>
+          <h3 class="card__title">Vicpol Interaction Menu</h3>
+          <p class="card__desc">An in-game interaction menu for Victoria Police roleplay servers.</p>
+          <ul class="card__tags">
+            <li>Lua</li><li>FiveM</li><li>GPL-3.0</li>
+          </ul>
+          <div class="card__links">
+            <a href="https://github.com/ethany6/Vicpol-Interaction-Menu" target="_blank" rel="noopener">Code ↗</a>
+          </div>
+        </article>
+        <article class="card reveal">
+          <div class="card__accent accent-3"></div>
+          <h3 class="card__title">GTA V Natives</h3>
+          <p class="card__desc">GTA V natives documentation — a handy reference for FiveM development.</p>
+          <ul class="card__tags">
+            <li>Shell</li><li>Docs</li><li>Fork</li>
+          </ul>
+          <div class="card__links">
+            <a href="https://github.com/ethany6/natives" target="_blank" rel="noopener">Code ↗</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <h2 class="section__title reveal">Skills</h2>
+      <p class="section__subtitle reveal">Tools and technologies I reach for most.</p>
+      <div class="skills-grid">
+        <div class="skill reveal">
+          <span class="skill__name">Lua</span>
+          <div class="skill__bar"><span class="skill__fill" style="--w: 90%"></span></div>
+        </div>
+        <div class="skill reveal">
+          <span class="skill__name">JavaScript</span>
+          <div class="skill__bar"><span class="skill__fill" style="--w: 85%"></span></div>
+        </div>
+        <div class="skill reveal">
+          <span class="skill__name">HTML / CSS</span>
+          <div class="skill__bar"><span class="skill__fill" style="--w: 80%"></span></div>
+        </div>
+        <div class="skill reveal">
+          <span class="skill__name">Node.js</span>
+          <div class="skill__bar"><span class="skill__fill" style="--w: 70%"></span></div>
+        </div>
+        <div class="skill reveal">
+          <span class="skill__name">SQL / MySQL</span>
+          <div class="skill__bar"><span class="skill__fill" style="--w: 65%"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <h2 class="section__title reveal">Experience</h2>
+      <p class="section__subtitle reveal">Where I've been and what I've learned.</p>
+      <div class="timeline">
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <div class="timeline__content">
+            <span class="timeline__date">Present</span>
+            <h3 class="timeline__title">Co-Founder & FiveM Developer</h3>
+            <p class="timeline__company">Galaxy Nexus</p>
+            <p class="timeline__desc">Co-founded Galaxy Nexus and build FiveM scripts and resources, from civpacks to roleplay interaction menus.</p>
+          </div>
+        </div>
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <div class="timeline__content">
+            <span class="timeline__date">2022 — Present</span>
+            <h3 class="timeline__title">Learning New Things</h3>
+            <p class="timeline__company">Self-taught</p>
+            <p class="timeline__desc">Picked up Python, HTML, CSS, Lua and MySQL, along with Windows backend work.</p>
+          </div>
+        </div>
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <div class="timeline__content">
+            <span class="timeline__date">Early days</span>
+            <h3 class="timeline__title">Started with JavaScript</h3>
+            <p class="timeline__company">Self-taught</p>
+            <p class="timeline__desc">Began coding in JavaScript before moving into QBCore and Lua for FiveM development.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <h2 class="section__title reveal">Contact</h2>
+      <p class="section__subtitle reveal">Got a project or just want to say hi? Reach out.</p>
+      <div class="contact reveal">
+        <a class="contact__email" href="https://galaxynexus.au" target="_blank" rel="noopener">galaxynexus.au</a>
+        <div class="contact__socials">
+          <a href="https://github.com/ethany6" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://x.com/gc_ethany" target="_blank" rel="noopener">X</a>
+          <a href="https://www.twitch.tv/gc_ethany" target="_blank" rel="noopener">Twitch</a>
+        </div>
+        <button class="discord-copy" id="discordCopy" type="button">
+          <svg class="discord-copy__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>
+          <span class="discord-copy__text">
+            <span class="discord-copy__label">cranberrydrink2</span>
+            <span class="discord-copy__id" id="discordId">1479823244897812532</span>
+          </span>
+          <span class="discord-copy__action" id="discordAction">Copy</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Copyright © <span id="year"></span> Ethan Y.</p>
+    <p class="footer__hint"><kbd>1</kbd>–<kbd>5</kbd> jump sections &nbsp;·&nbsp; <kbd>t</kbd> theme &nbsp;·&nbsp; <kbd>m</kbd> music</p>
+  </footer>
+
+  <div class="nowplaying" id="nowplaying">
+    <div class="nowplaying__art">
+      <img src="https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02f421e4ca838fe19d8cdf934a" alt="" />
+    </div>
+    <div class="nowplaying__info">
+      <span class="nowplaying__label">NOW PLAYING</span>
+      <span class="nowplaying__title">Resonance</span>
+      <span class="nowplaying__artist">HOME</span>
+    </div>
+    <span class="nowplaying__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+  </div>
+
+  <audio id="bgMusic" src="music/HOME%20-%20Resonance.mp3" loop preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
