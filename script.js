@@ -70,6 +70,7 @@ themeToggle.addEventListener("click", () => {
   try {
     localStorage.setItem("theme", next);
   } catch (e) {}
+  if (typeof updateVolumeFill === "function") updateVolumeFill();
 });
 
 // Page load progress bar
@@ -151,6 +152,16 @@ function toggleMusic() {
 
 if (muteBtn) muteBtn.addEventListener("click", toggleMute);
 
+function updateVolumeFill() {
+  if (!volumeSlider) return;
+  const pct = volumeSlider.value;
+  const track =
+    document.documentElement.getAttribute("data-theme") === "light"
+      ? "rgba(0, 0, 0, 0.15)"
+      : "rgba(255, 255, 255, 0.18)";
+  volumeSlider.style.background = `linear-gradient(to right, #43e97b ${pct}%, ${track} ${pct}%)`;
+}
+
 if (volumeSlider) {
   volumeSlider.addEventListener("input", () => {
     const v = volumeSlider.value / 100;
@@ -158,6 +169,7 @@ if (volumeSlider) {
     if (v > 0 && bgMusic.muted) {
       bgMusic.muted = false;
     }
+    updateVolumeFill();
     updateStatus();
   });
 }
@@ -167,10 +179,12 @@ bgMusic.addEventListener("pause", updateStatus);
 bgMusic.addEventListener("volumechange", () => {
   if (volumeSlider && !bgMusic.muted) {
     volumeSlider.value = Math.round(bgMusic.volume * 100);
+    updateVolumeFill();
   }
 });
 
 updateStatus();
+updateVolumeFill();
 tryAutoplay();
 
 window.addEventListener("pointerdown", tryAutoplay, { once: true });
