@@ -117,21 +117,27 @@ loadGitHubStats();
 const bgMusic = document.getElementById("bgMusic");
 const nowplaying = document.getElementById("nowplaying");
 const muteBtn = document.getElementById("muteBtn");
+const volumeSlider = document.getElementById("volumeSlider");
 const VOLUME = 0.15;
 
-function setNowPlaying(playing) {
-  nowplaying.classList.toggle("paused", !playing);
-  nowplaying.querySelector(".nowplaying__label").textContent = playing
-    ? "NOW PLAYING"
-    : "PAUSED";
-  if (muteBtn) muteBtn.classList.toggle("muted", !playing);
+function updateStatus() {
+  const label = nowplaying.querySelector(".nowplaying__label");
+  nowplaying.classList.toggle("paused", bgMusic.paused);
+  nowplaying.classList.toggle("muted", bgMusic.muted);
+  if (muteBtn) muteBtn.classList.toggle("muted", bgMusic.muted);
+
+  if (bgMusic.muted) label.textContent = "MUTED";
+  else if (bgMusic.paused) label.textContent = "PAUSED";
+  else label.textContent = "NOW PLAYING";
 }
 
 function tryAutoplay() {
   bgMusic.volume = VOLUME;
-  bgMusic.play()
-    .then(() => setNowPlaying(true))
-    .catch(() => {});
+  bgMusic.play().catch(() => {});
+}
+
+function toggleMute() {
+  bgMusic.muted = !bgMusic.muted;
 }
 
 function toggleMusic() {
@@ -143,11 +149,28 @@ function toggleMusic() {
   }
 }
 
-if (muteBtn) muteBtn.addEventListener("click", toggleMusic);
+if (muteBtn) muteBtn.addEventListener("click", toggleMute);
 
-bgMusic.addEventListener("play", () => setNowPlaying(true));
-bgMusic.addEventListener("pause", () => setNowPlaying(false));
+if (volumeSlider) {
+  volumeSlider.addEventListener("input", () => {
+    const v = volumeSlider.value / 100;
+    bgMusic.volume = v;
+    if (v > 0 && bgMusic.muted) {
+      bgMusic.muted = false;
+    }
+    updateStatus();
+  });
+}
 
+bgMusic.addEventListener("play", updateStatus);
+bgMusic.addEventListener("pause", updateStatus);
+bgMusic.addEventListener("volumechange", () => {
+  if (volumeSlider && !bgMusic.muted) {
+    volumeSlider.value = Math.round(bgMusic.volume * 100);
+  }
+});
+
+updateStatus();
 tryAutoplay();
 
 window.addEventListener("pointerdown", tryAutoplay, { once: true });

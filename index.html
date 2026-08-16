@@ -87,7 +87,7 @@
             </div>
             <div class="discord-card__identity">
               <span class="discord-card__name">Ethan</span>
-              <span class="discord-card__tag">@ethany6</span>
+              <span class="discord-card__tag">@cranberrydrink2</span>
             </div>
           </div>
           <div class="discord-card__activity">
@@ -266,27 +266,32 @@
   </footer>
 
   <div class="nowplaying" id="nowplaying">
-    <div class="nowplaying__art">
-      <img src="https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02f421e4ca838fe19d8cdf934a" alt="" />
+    <div class="nowplaying__main">
+      <div class="nowplaying__art">
+        <img src="https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02f421e4ca838fe19d8cdf934a" alt="" />
+      </div>
+      <div class="nowplaying__info">
+        <span class="nowplaying__label">NOW PLAYING</span>
+        <span class="nowplaying__title">Resonance</span>
+        <span class="nowplaying__artist">HOME</span>
+      </div>
+      <span class="nowplaying__bars" aria-hidden="true"><i></i><i></i><i></i></span>
     </div>
-    <div class="nowplaying__info">
-      <span class="nowplaying__label">NOW PLAYING</span>
-      <span class="nowplaying__title">Resonance</span>
-      <span class="nowplaying__artist">HOME</span>
+    <div class="nowplaying__controls">
+      <button class="nowplaying__mute" id="muteBtn" aria-label="Mute music">
+        <svg class="nowplaying__icon nowplaying__icon--unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+        </svg>
+        <svg class="nowplaying__icon nowplaying__icon--muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <line x1="23" y1="9" x2="17" y2="15"></line>
+          <line x1="17" y1="9" x2="23" y2="15"></line>
+        </svg>
+      </button>
+      <input class="nowplaying__volume" type="range" id="volumeSlider" min="0" max="100" value="15" aria-label="Volume" />
     </div>
-    <span class="nowplaying__bars" aria-hidden="true"><i></i><i></i><i></i></span>
-    <button class="nowplaying__mute" id="muteBtn" aria-label="Mute music">
-      <svg class="nowplaying__icon nowplaying__icon--unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-      </svg>
-      <svg class="nowplaying__icon nowplaying__icon--muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-        <line x1="23" y1="9" x2="17" y2="15"></line>
-        <line x1="17" y1="9" x2="23" y2="15"></line>
-      </svg>
-    </button>
   </div>
 
   <audio id="bgMusic" src="music/HOME%20-%20Resonance.mp3" loop preload="auto"></audio>
