@@ -70,7 +70,6 @@ themeToggle.addEventListener("click", () => {
   try {
     localStorage.setItem("theme", next);
   } catch (e) {}
-  if (typeof updateVolumeFill === "function") updateVolumeFill();
 });
 
 // Page load progress bar
@@ -113,81 +112,6 @@ async function loadGitHubStats() {
 }
 
 loadGitHubStats();
-
-// Now playing state
-const bgMusic = document.getElementById("bgMusic");
-const nowplaying = document.getElementById("nowplaying");
-const muteBtn = document.getElementById("muteBtn");
-const volumeSlider = document.getElementById("volumeSlider");
-const VOLUME = 0.15;
-
-function updateStatus() {
-  const label = nowplaying.querySelector(".nowplaying__label");
-  nowplaying.classList.toggle("paused", bgMusic.paused);
-  nowplaying.classList.toggle("muted", bgMusic.muted);
-  if (muteBtn) muteBtn.classList.toggle("muted", bgMusic.muted);
-
-  if (bgMusic.muted) label.textContent = "MUTED";
-  else if (bgMusic.paused) label.textContent = "PAUSED";
-  else label.textContent = "NOW PLAYING";
-}
-
-function tryAutoplay() {
-  bgMusic.volume = VOLUME;
-  bgMusic.play().catch(() => {});
-}
-
-function toggleMute() {
-  bgMusic.muted = !bgMusic.muted;
-}
-
-function toggleMusic() {
-  if (bgMusic.paused) {
-    bgMusic.volume = VOLUME;
-    bgMusic.play().catch(() => {});
-  } else {
-    bgMusic.pause();
-  }
-}
-
-if (muteBtn) muteBtn.addEventListener("click", toggleMute);
-
-function updateVolumeFill() {
-  if (!volumeSlider) return;
-  const pct = volumeSlider.value;
-  const track =
-    document.documentElement.getAttribute("data-theme") === "light"
-      ? "rgba(0, 0, 0, 0.15)"
-      : "rgba(255, 255, 255, 0.18)";
-  volumeSlider.style.background = `linear-gradient(to right, #43e97b ${pct}%, ${track} ${pct}%)`;
-}
-
-if (volumeSlider) {
-  volumeSlider.addEventListener("input", () => {
-    const v = volumeSlider.value / 100;
-    bgMusic.volume = v;
-    if (v > 0 && bgMusic.muted) {
-      bgMusic.muted = false;
-    }
-    updateVolumeFill();
-    updateStatus();
-  });
-}
-
-bgMusic.addEventListener("play", updateStatus);
-bgMusic.addEventListener("pause", updateStatus);
-bgMusic.addEventListener("volumechange", () => {
-  if (volumeSlider && !bgMusic.muted) {
-    volumeSlider.value = Math.round(bgMusic.volume * 100);
-    updateVolumeFill();
-  }
-});
-
-updateStatus();
-updateVolumeFill();
-tryAutoplay();
-
-window.addEventListener("pointerdown", tryAutoplay, { once: true });
 
 // Hero name scramble on hover
 const heroName = document.querySelector(".hero__name");
@@ -264,8 +188,6 @@ document.addEventListener("keydown", (e) => {
     if (el) el.scrollIntoView({ behavior: "smooth" });
   } else if (e.key === "t" || e.key === "T") {
     themeToggle.click();
-  } else if (e.key === "m" || e.key === "M") {
-    toggleMusic();
   }
 });
 
