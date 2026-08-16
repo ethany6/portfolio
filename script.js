@@ -116,6 +116,7 @@ loadGitHubStats();
 // Now playing state
 const bgMusic = document.getElementById("bgMusic");
 const nowplaying = document.getElementById("nowplaying");
+const muteBtn = document.getElementById("muteBtn");
 const VOLUME = 0.15;
 
 function setNowPlaying(playing) {
@@ -123,6 +124,7 @@ function setNowPlaying(playing) {
   nowplaying.querySelector(".nowplaying__label").textContent = playing
     ? "NOW PLAYING"
     : "PAUSED";
+  if (muteBtn) muteBtn.classList.toggle("muted", !playing);
 }
 
 function tryAutoplay() {
@@ -140,6 +142,8 @@ function toggleMusic() {
     bgMusic.pause();
   }
 }
+
+if (muteBtn) muteBtn.addEventListener("click", toggleMusic);
 
 bgMusic.addEventListener("play", () => setNowPlaying(true));
 bgMusic.addEventListener("pause", () => setNowPlaying(false));

@@ -980,6 +980,41 @@ a {
   animation-play-state: paused;
 }
 
+.nowplaying__mute {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 6px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.nowplaying__mute:hover {
+  color: var(--text);
+  transform: scale(1.1);
+}
+
+.nowplaying__icon {
+  width: 18px;
+  height: 18px;
+}
+
+.nowplaying__icon--muted {
+  display: none;
+}
+
+.nowplaying__mute.muted .nowplaying__icon--unmuted {
+  display: none;
+}
+
+.nowplaying__mute.muted .nowplaying__icon--muted {
+  display: block;
+}
+
 @keyframes eq {
   0%, 100% { height: 5px; }
   50% { height: 16px; }
